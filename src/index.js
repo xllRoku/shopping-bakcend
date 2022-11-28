@@ -3,13 +3,14 @@ import { config as dotenvConfig } from "dotenv";
 import UserRoutes from "./infrastructure/routes/user-routes.js";
 import { errorMiddleware } from "./infrastructure/middlewares/error-middleware.js";
 import mongoose from "mongoose";
-import { UserSchema } from "./infrastructure/schema/user.schema.js";
+import cors from "cors";
 
 dotenvConfig();
 
 const startApp = () => {
   const app = express();
   app.use(express.json());
+  app.use(cors());
   return app;
 };
 
