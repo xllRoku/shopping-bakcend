@@ -26,8 +26,6 @@ const bootstrap = async () => {
 
     console.log("DB conectada");
 
-    const user = new UserSchema();
-
     app.use("/users", UserRoutes);
     app.use(errorMiddleware);
 
