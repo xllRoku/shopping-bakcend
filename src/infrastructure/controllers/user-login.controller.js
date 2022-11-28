@@ -1,6 +1,6 @@
-import { validateLoginBody } from "../validations/validate-login-body";
-import { sign } from "jsonwebtoken";
-import { signAsync } from "../services/jwt.service";
+import { validateLoginBody } from "../validations/validate-login-body.js";
+import jsonwebtoken from "jsonwebtoken";
+import { signAsync } from "../services/jwt.service.js";
 
 export const userLoginController = async ({ body }, res, next) => {
   try {
@@ -8,7 +8,7 @@ export const userLoginController = async ({ body }, res, next) => {
 
     const id = await loginUserService(email, password);
 
-    const signOptions = sign({ id }, process.env.JWT_SECRET_KEY, {
+    const signOptions = jsonwebtoken.sign({ id }, process.env.JWT_SECRET_KEY, {
       algorithm: "HS512",
       expiresIn: "7d",
     });

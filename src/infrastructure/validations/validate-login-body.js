@@ -1,7 +1,7 @@
 import {
   validateEmail,
   validatePassword,
-} from "../../domain/validations/user-validation";
+} from "../../domain/validations/user-validation.js";
 
 export const validateLoginBody = (body) => {
   const { email, password } = body;
