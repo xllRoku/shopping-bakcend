@@ -9,4 +9,6 @@ export const validateLoginBody = (body) => {
 
   if (!validateEmail(email) || validatePassword(password))
     throw new Error("Las credenciales son incorrectas");
+
+  return { email, password };
 };

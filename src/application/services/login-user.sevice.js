@@ -1,4 +1,4 @@
-import { UserRepository } from "../../infrastructure/respositories/user-repository";
+import { UserRepository } from "../../infrastructure/respositories/user-repository.js";
 
 export const loginUserService = async (email, password) => {
   const userRepository = new UserRepository();

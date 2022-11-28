@@ -1,6 +1,7 @@
 import { validateLoginBody } from "../validations/validate-login-body.js";
 import jsonwebtoken from "jsonwebtoken";
 import { signAsync } from "../services/jwt.service.js";
+import { loginUserService } from "../../application/services/login-user.sevice.js";
 
 export const userLoginController = async ({ body }, res, next) => {
   try {
@@ -19,6 +20,7 @@ export const userLoginController = async ({ body }, res, next) => {
 
     res.json({ token });
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
