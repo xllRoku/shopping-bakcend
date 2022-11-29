@@ -7,11 +7,14 @@ import { BadRequestException } from "./errors/bad-request.exception.js";
 
 export const validateLoginBody = (body) => {
   const { email, password } = body;
+
   if (!email || !password)
     throw new BadRequestException("Se espera un email y contraseña");
 
-  if (!validateEmail(email) || validatePassword(password))
+  if (!validateEmail(email) || !validatePassword(password)) {
+    console.log("HIII");
     throw new UnauthorizedException("Las credenciales son incorrectas");
+  }
 
   return { email, password };
 };

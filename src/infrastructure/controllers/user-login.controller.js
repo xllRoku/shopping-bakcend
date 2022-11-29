@@ -2,6 +2,9 @@ import { validateLoginBody } from "../validations/validate-login-body.js";
 import jsonwebtoken from "jsonwebtoken";
 import { signAsync } from "../services/jwt.service.js";
 import { loginUserService } from "../../application/services/login-user.sevice.js";
+import { config as dotenvConfig } from "dotenv";
+
+dotenvConfig();
 
 export const userLoginController = async ({ body }, res, next) => {
   try {
@@ -9,14 +12,14 @@ export const userLoginController = async ({ body }, res, next) => {
 
     const id = await loginUserService(email, password);
 
-    const signOptions = jsonwebtoken.sign({ id }, process.env.JWT_SECRET_KEY, {
+    const signOptions = {
       algorithm: "HS512",
       expiresIn: "7d",
-    });
+    };
 
-    res.cookie("signOptions", jwt, { maxAge: 900000, httpOnly: true });
+    const payload = { id: id };
 
-    const token = await signAsync(id, signOptions);
+    const token = await signAsync(payload, signOptions);
 
     res.json({ token });
   } catch (error) {
