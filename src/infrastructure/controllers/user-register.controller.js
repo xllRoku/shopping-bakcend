@@ -4,7 +4,6 @@ import uuid from "uuid-random";
 
 export const userRegisterController = async ({ body }, res, next) => {
   try {
-    // console.log("start here");
     const id = uuid();
 
     const user = validateRegisterBody(body, id);
