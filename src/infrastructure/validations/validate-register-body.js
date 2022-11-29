@@ -6,8 +6,8 @@ import {
   validatePassword,
 } from "../../domain/validations/user-validation.js";
 
-export const validateRegisterBody = (body) => {
-  const { id, name, email, password } = body;
+export const validateRegisterBody = (body, id) => {
+  const { name, email, password } = body;
 
   if (!validateId(id))
     throw new BadRequestException("El formato del id no es correcto");
