@@ -29,7 +29,6 @@ export class UserRepository {
 
   async create(domainUser) {
     const persistanceUser = this.toPersistance(domainUser);
-    s;
     const user = new UserSchema(persistanceUser);
 
     await user.save();
