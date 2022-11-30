@@ -1,5 +1,4 @@
 import { validateLoginBody } from "../validations/validate-login-body.js";
-import jsonwebtoken from "jsonwebtoken";
 import { signAsync } from "../services/jwt.service.js";
 import { loginUserService } from "../../application/services/login-user.sevice.js";
 import { config as dotenvConfig } from "dotenv";

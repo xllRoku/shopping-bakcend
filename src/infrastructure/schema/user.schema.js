@@ -5,6 +5,10 @@ const schema = new Schema({
   email: { type: String, unique: true, index: true, required: true },
   name: { type: String, required: true },
   password: { type: String, required: true },
+  categories: {
+    type: Schema.Types.ObjectId,
+    ref: "Category",
+  },
 });
 
 export const UserSchema = model("User", schema);

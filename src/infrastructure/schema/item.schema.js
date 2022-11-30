@@ -8,4 +8,4 @@ const schema = new Schema({
   category: { type: String, required: true },
 });
 
-export const ItemSchema = model("User", schema);
+export const ItemSchema = model("Item", schema);
