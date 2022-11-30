@@ -1,6 +1,8 @@
 import express from "express";
 import { config as dotenvConfig } from "dotenv";
-import UserRoutes from "./infrastructure/routes/user-routes.js";
+import UserRoutes from "./infrastructure/routes/user.routes.js";
+import ItemsRoutes from "./infrastructure/routes/item.routes.js";
+import CategoriesRoutes from "./infrastructure/routes/item.routes.js";
 import { errorMiddleware } from "./infrastructure/middlewares/error-middleware.js";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -27,6 +29,8 @@ const bootstrap = async () => {
     console.log("DB conectada");
 
     app.use("/users", UserRoutes);
+    app.use("/items", ItemsRoutes);
+    app.use("categories", CategoriesRoutes);
     app.use(errorMiddleware);
 
     app.listen(process.env.PORT, () =>
